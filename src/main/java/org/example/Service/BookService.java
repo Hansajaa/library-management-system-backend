@@ -4,5 +4,5 @@ import org.example.Dto.Book;
 
 public interface BookService {
 
-    boolean addBook(Book book);
+    void addBook(Book book);
 }
