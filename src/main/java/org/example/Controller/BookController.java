@@ -19,7 +19,7 @@ public class BookController {
 
     final BookService service;
 
-    @PostMapping
+    @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public void addBook(@RequestBody Book book){
         long startTime = System.currentTimeMillis();
@@ -29,11 +29,11 @@ public class BookController {
         log.info("execution Time for add {}ms ",auditTime);
     }
 
-    @GetMapping
+    @GetMapping("/get")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public List<Book> getBooks(){
 
         return service.getBooks();
-        
+
     }
 }
