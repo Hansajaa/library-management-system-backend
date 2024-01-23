@@ -6,6 +6,7 @@ import org.example.Dto.Book;
 import org.example.Service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,5 +36,18 @@ public class BookController {
 
         return service.getBooks();
 
+    }
+
+    @DeleteMapping("/delete{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<String> deleteBook(@PathVariable Long id){
+        return service.delete(id) ? ResponseEntity.ok("Deleted"):ResponseEntity.notFound().build();
+    }
+
+
+    @GetMapping("search/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Book getBookById(@PathVariable Long id){
+        return service.getBookById(id);
     }
 }

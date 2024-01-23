@@ -13,6 +13,7 @@ import org.w3c.dom.ls.LSException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -49,5 +50,22 @@ public class BookServiceImpl implements BookService {
         }
 
         return bookList;
+    }
+
+    @Override
+    public boolean delete(Long id) {
+        if (repository.existsById(id)){
+            repository.deleteById(id);
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    @Override
+    public Book getBookById(Long id) {
+
+        Optional<BookEntity> book = repository.findById(id);
+        return modelMapper.map(book,Book.class);
     }
 }
