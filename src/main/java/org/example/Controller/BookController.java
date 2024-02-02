@@ -15,6 +15,7 @@ import java.util.List;
 @RequestMapping("/book")
 @Slf4j
 @RequiredArgsConstructor
+@CrossOrigin
 public class BookController {
 
 
