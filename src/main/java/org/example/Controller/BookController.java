@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.Dto.Book;
 import org.example.Service.BookService;
+import org.example.entity.BookEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,12 @@ public class BookController {
     @ResponseStatus(HttpStatus.CREATED)
     public void addBook(@RequestBody Book book){
         long startTime = System.currentTimeMillis();
-        service.addBook(book);
+        try {
+            Thread.sleep(1000);
+            service.addBook(book);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         long auditTime = System.currentTimeMillis() - startTime;
 
         log.info("execution Time for add {}ms ",auditTime);
@@ -33,8 +39,12 @@ public class BookController {
 
     @GetMapping("/get")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public List<Book> getBooks(){
-
+    public List<BookEntity> getBooks(){
+        try{
+            Thread.sleep(100);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         return service.getBooks();
 
     }

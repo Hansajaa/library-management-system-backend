@@ -9,6 +9,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Book {
+    private String id;
     private String isbn;
     private String title;
     private String author;

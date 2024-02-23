@@ -38,14 +38,14 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> getBooks() {
+    public List<BookEntity> getBooks() {
         Iterable<BookEntity> allBooks = repository.findAll();
 
-        List<Book> bookList=new ArrayList<>();
+        List<BookEntity> bookList=new ArrayList<>();
 
         for (BookEntity book:allBooks) {
             bookList.add(
-                    modelMapper.map(book,Book.class)
+                    book
             );
         }
 

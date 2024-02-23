@@ -1,6 +1,7 @@
 package org.example.Service;
 
 import org.example.Dto.Book;
+import org.example.entity.BookEntity;
 
 import java.util.List;
 
@@ -8,7 +9,7 @@ public interface BookService {
 
     void addBook(Book book);
 
-    List<Book> getBooks();
+    List<BookEntity> getBooks();
 
     boolean delete(Long id);
 
